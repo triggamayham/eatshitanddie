@@ -1,0 +1,394 @@
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>NFL Directv - Sunday Ticket</title>
+	<style type="text/css" media="screen">
+	</style>
+	<link rel="stylesheet" type="text/css" href="css/custom.css">
+	<script type="text/javascript">
+		window.$profile = function(){};
+		$profile.stop = function(){};
+		$profile.loggers = {};
+		var dtvServer = "www.directv.com";
+		var dtvProd = "www.directv.com";
+		var logjs = false;
+		if(false || dtvServer != dtvProd){
+			logjs=true;
+		}
+	</script>		
+	<script type="text/javascript" src="http://cdn.directv.com/resources/js/integration/integration.js"></script>
+	<script type="text/javascript" src="http://cdn.directv.com/resources/js/compressed/bundles/directv-header.js?57437"></script>
+	<!--<script type="text/javascript" src="js/directv-cms.js"></script>-->
+	<link rel="stylesheet" type="text/css" href="http://cdn.directv.com/resources/css/compressed/content/core.css?6" media="all"/>
+	
+	<!-- SRINIVAS MURTHY : NFL SUNDAY TICKET To-Go SCRIPT -->
+	<script type="text/javascript">
+		var baseUrl = "http://directvnfl.vo.llnwd.net/e4/supercast/web/";
+		var appName = "NFLSundayTicketV512";
+		
+		function getCookieByName(name) {
+			var value = "; " + document.cookie;
+		  	var parts = value.split("; " + name + "=");
+		  	if (parts.length == 2) return parts.pop().split(";").shift();
+		}
+	</script>
+	<script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
+	<script type="text/javascript" src="http://directvnfl.vo.llnwd.net/e4/supercast/web/js/NFLSundayTicket.js"></script>
+	<script type="text/javascript" src="http://directvnfl.vo.llnwd.net/e4/supercast/web/js/liveclips-sdk.js"></script>
+	<script type="text/javascript" src="http://directvnfl.vo.llnwd.net/e4/supercast/web/swfobject.js"></script>
+	<!-- END OF NFL SUNDAY TICKET To-Go SCRIPT -->
+	<script type="text/javascript">
+		<!-- For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. --> 
+		var swfVersionStr = "18.0.0.209";
+		<!-- To use express install, set to playerProductInstall.swf, otherwise the empty string. -->
+		var xiSwfUrlStr =  baseUrl + "playerProductInstall.swf";
+		var flashvars = {};
+	
+		flashvars.token = "yRfWuJBRk3FF30yKV06W3%2FZEM1vZyCKmMaTFrMbcC7IWcyA9TWxe2XAkUF43QT0CtAGDCKXHEDk2z02EI5HHex66qFYAgfHT%2FPThlu5mlhk2XH5rPscTrGvvDsvtdqlaY9T7shq1HCHjPsDuNLCZClQ1I%2FXbcrf7XUy43597136KNkLk8HxPhuLAlzaqGHUEX2lCChQMgK5RfbZ4XVZW0v2eyMn8%2B%2BAeTefCCY%2FJwaI%2FG8yguIFTjBN4Du1s0F0tsv5%2BADI33vXMrj7u553vAlbdRpkHTGmpwaPD%2Bf9YIYQTh%2BujFHps4RTPMGOw2RpnRe0hqnTz4yD%2FeCC%2Bd8qZFA%3D%3D";
+		flashvars.sessionId = "365a13d0858c3031ee29ae444bd4e568";
+		flashvars.ServerId = getCookieByName("ServerID");
+	
+		var params = {};
+		params.quality = "high";
+		params.bgcolor = "#1b1c1f";
+		params.allowscriptaccess = "always";
+		params.allowfullscreen = "true";
+		params.wmode = "direct";
+	
+		var attributes = {};
+		attributes.id = "NFLSundayTicketV512";
+		attributes.name = "NFLSundayTicketV512";
+		attributes.align = "middle";
+		attributes.border = "0px";
+		swfobject.embedSWF(baseUrl + "NFLSundayTicketV512.swf", "nwc_flashContent", "1024", "768", swfVersionStr, xiSwfUrlStr, flashvars, params, attributes);
+		<!-- JavaScript enabled so display the nwc_flashContent div in case it is not replaced with a swf object. -->
+		swfobject.createCSS("#nwc_flashContent", "display:block;text-align:left;");
+	</script>
+</head>
+<body id="content_page_layout" class="" onbeforeunload="beforeUnload()">
+	<div id="dtv_tup">
+		<script type="text/javascript">DIRECTV.SiteIntegration.Client.initialize();</script>
+		<script type="text/javascript">DIRECTV.SiteIntegration.Client.addHeader();</script>
+		<script type="text/javascript">
+                (function(){
+                    var iMaxWidth = 980;
+                    var oNavSection = $('dtv_topnav_sections_nav');
+                    var oNavCustomer = $('dtv_topnav_util_nav');
+                    // Co-branded sites - top nav not always present
+                    if (oNavSection != undefined && oNavCustomer != undefined) {
+                        var iDelta = iMaxWidth - oNavCustomer.getWidth() - oNavSection.getWidth();
+                        if (Math.abs(iDelta) < 80) {
+                            var aNavSectionLIs = oNavSection.down('ul').childElements();
+                            var iPolarity = (iDelta > 0) ? -1 : 1;
+                            var iLeftOrRight = -1;
+                            for (var i=Math.abs(iDelta); i>0; i--){
+                                if (i % aNavSectionLIs.length == 0){
+                                    iLeftOrRight = iLeftOrRight * -1;
+                                }
+                                var el = aNavSectionLIs[i % aNavSectionLIs.length].down('div');
+                                if (iLeftOrRight < 0){
+                                    el.setStyle({paddingLeft: (parseInt(el.getStyle('paddingLeft'))-iPolarity*1)+'px'});
+                                } else {
+                                    el.setStyle({paddingRight: (parseInt(el.getStyle('paddingRight'))-iPolarity*1)+'px'});
+                                }
+                            }
+                        }
+                    }
+                })();
+            </script>
+		<div id="ctl_header" class="ctl-header">
+			<div id="ctl_header_menu">
+				<b class="background"></b>
+				<ul class="header-menu">
+					<li class="en-espanol first"><a
+						href="/DTVAPP/content/sports/es_nfl" class="header-menu-link">En
+							Espa&ntilde;ol</a></li>
+					<li id="content_page_special_offers"><a
+						class="special-offers-link header-menu-link js-CMSModule-showSpecialOffersMenu">Get
+							Special Offers</a></li>
+					<li class="share-this-page last"><a
+						class="share-link header-menu-link js-CMSModule-showShareMenu">Share
+							this page</a><b></b>
+						<div id="share_menu" style="display: none">
+							<ul>
+								<li id="share_close"><a class="js-CMSModule-hideShareMenu">Close</a>
+								</li>
+								<li id="share_email"><a
+									href="mailto:?subject=Check%20out%20this%20page%20on%20DIRECTV.com&body=http%3A%2F%2Fwww.directv.com%3A80%2FDTVAPP%2Fcontent%2Fsports%2Fnfl">Email</a>
+								</li>
+								<li id="share_bookmark"><a class="js-CMSModule-addBookmark">Bookmark</a>
+								</li>
+								<li id="share_facebook"><a class="js-CMSModule-shareLink"><var
+											title="shareType">"facebook"</var>Facebook</a>
+								</li>
+								<li id="share_twitter"><a class="js-CMSModule-shareLink"><var
+											title="shareType">"twitter"</var>Twitter</a>
+								</li>
+								<li id="share_digg"><a class="js-CMSModule-shareLink"><var
+											title="shareType">"digg"</var>Digg</a>
+								</li>
+								<li id="share_delicious"><a class="js-CMSModule-shareLink"><var
+											title="shareType">"delicious"</var>del.icio.us</a>
+								</li>
+								<li id="share_buzzup"><a class="js-CMSModule-shareLink"><var
+											title="shareType">"buzzup"</var>Buzzup</a>
+								</li>
+							</ul>
+						</div></li>
+				</ul>
+			</div>
+			<div id="mod_101622_2"
+				class="ctm-tup colspan-1 breadcrumbs cms2ListModule js-cms-module">
+				<var title="cmsModuleName">"Sports : Breadcrumbs"</var>
+				<div class="ctm-content-module bulleted-list ">
+					<div class="none">
+						<b class="head"><b></b>
+						</b>
+						<div class="skin">
+							<div class="inner-skin">
+								<div class="body">
+									<div class="content">
+										<ul id="mod_101622_2_list" class="clear-after">
+											<li
+												class="colspan-1 none   odd-item odd-row  first-row item-1">
+												<b class="head"><b></b>
+											</b>
+												<div class="skin" style="">
+													<div class="inner-skin">
+														<div class="body">
+															<div class="content">
+																<div class="title title-only">
+																	<div class="tup">
+																		<h4>
+																			<a href="/DTVAPP/" target="_self">Home</a>
+																		</h4>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div> <b class="foot"><b></b>
+											</b></li>
+											<li class="colspan-1 none   even-item even-row   item-2">
+												<b class="head"><b></b>
+											</b>
+												<div class="skin" style="">
+													<div class="inner-skin">
+														<div class="body">
+															<div class="content">
+																<div class="title title-only">
+																	<div class="tup">
+																		<h4>
+																			<a href="/DTVAPP/content/sports/overview"
+																				target="_self">Sports</a>
+																		</h4>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div> <b class="foot"><b></b>
+											</b></li>
+										</ul>
+										<script type="text/javascript">adjustListModuleItemHeights('mod_101622_2_list', 1, 1, 'stacked', 'none');</script>
+									</div>
+								</div>
+							</div>
+						</div>
+						<b class="foot"><b></b>
+						</b>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+			<!--js-cms-module -->
+
+			<script type="text/javascript">
+				var Reporting = Reporting ? Reporting : new Object();
+				Reporting.ModuleIds = Reporting.ModuleIds ? Reporting.ModuleIds : [];
+				Reporting.ModuleIds[Reporting.ModuleIds.length] = "Sports : Breadcrumbs";
+			</script>
+		</div>
+		<!-- Add body content here -->
+		<!-- SWFObject's dynamic embed method replaces this alternative HTML content with Flash content when enough 
+             JavaScript and Flash plug-in support is available. The div is initially hidden so that it doesn't show
+             when JavaScript is disabled.
+            -->
+		<div class="flashWrapper">
+			<div id="nwc_flashContent">
+				<p>To view this page ensure that Adobe Flash Player version 18.0.0.209 or greater is installed.</p>
+				<script type="text/javascript"> 
+					var pageHost = ((document.location.protocol == "https:") ? "https://" :	"http://"); 
+					document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" + pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>"); 
+					var fc = document.getElementById('nwc_flashContent');
+					fc.setAttribute('class','noFlash');
+                </script>
+			</div>
+		</div>
+		<noscript>
+			<div class="flashWrapper">
+				<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="1024" height="768" id="NFLSundayTicketV512" border="0px" align="middle">
+					<param name="movie" value="http://directvnfl.vo.llnwd.net/e4/supercast/web/NFLSundayTicketV512.swf" />
+					<param name="quality" value="high" />
+					<param name="bgcolor" value="#1b1c1f" />
+					<param name="allowScriptAccess" value="always" />
+					<param name="allowFullScreen" value="true" />
+					<param name="wmode" value="direct" />
+					<param name="token" value="yRfWuJBRk3FF30yKV06W3%2FZEM1vZyCKmMaTFrMbcC7IWcyA9TWxe2XAkUF43QT0CtAGDCKXHEDk2z02EI5HHex66qFYAgfHT%2FPThlu5mlhk2XH5rPscTrGvvDsvtdqlaY9T7shq1HCHjPsDuNLCZClQ1I%2FXbcrf7XUy43597136KNkLk8HxPhuLAlzaqGHUEX2lCChQMgK5RfbZ4XVZW0v2eyMn8%2B%2BAeTefCCY%2FJwaI%2FG8yguIFTjBN4Du1s0F0tsv5%2BADI33vXMrj7u553vAlbdRpkHTGmpwaPD%2Bf9YIYQTh%2BujFHps4RTPMGOw2RpnRe0hqnTz4yD%2FeCC%2Bd8qZFA%3D%3D" />
+					<param name="sessionId" value="365a13d0858c3031ee29ae444bd4e568" />
+					<param name="ServerId" value="null"/>
+					<!--[if !IE]>-->
+					<object type="application/x-shockwave-flash" data="http://directvnfl.vo.llnwd.net/e4/supercast/web/NFLSundayTicketV512.swf" width="1024" height="768" border="0px" align="middle">
+						<param name="quality" value="high" />
+						<param name="bgcolor" value="#1b1c1f" />
+						<param name="allowScriptAccess" value="always" />
+						<param name="allowFullScreen" value="true" />
+						<param name="wmode" value="direct" />
+						<param name="token" value="yRfWuJBRk3FF30yKV06W3%2FZEM1vZyCKmMaTFrMbcC7IWcyA9TWxe2XAkUF43QT0CtAGDCKXHEDk2z02EI5HHex66qFYAgfHT%2FPThlu5mlhk2XH5rPscTrGvvDsvtdqlaY9T7shq1HCHjPsDuNLCZClQ1I%2FXbcrf7XUy43597136KNkLk8HxPhuLAlzaqGHUEX2lCChQMgK5RfbZ4XVZW0v2eyMn8%2B%2BAeTefCCY%2FJwaI%2FG8yguIFTjBN4Du1s0F0tsv5%2BADI33vXMrj7u553vAlbdRpkHTGmpwaPD%2Bf9YIYQTh%2BujFHps4RTPMGOw2RpnRe0hqnTz4yD%2FeCC%2Bd8qZFA%3D%3D" />
+						<param name="sessionId" value="365a13d0858c3031ee29ae444bd4e568" />
+						<param name="ServerId" value="null"/>
+					<!--<![endif]-->
+					<!--[if gte IE 6]>-->
+						<p> 
+							Either scripts and active content are not permitted to run or Adobe Flash Player version
+							11.5.0 or greater is not installed.
+						</p>
+					<!--<![endif]-->
+						<a href="http://www.adobe.com/go/getflashplayer">
+							<img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash Player" />
+						</a>
+					<!--[if !IE]>-->
+					</object>
+					<!--<![endif]-->
+				</object>
+			</div>
+		</noscript>
+		<div id="wrapperTxtId" class="wrapperTextBlock">
+			<p class="paragraphText">
+				<!--  
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                 -->
+			</p>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div class="footerWrap">
+		<script type="text/javascript">DIRECTV.SiteIntegration.Client.addFooter();</script>
+		<!--[if IE 9]>
+				        <script type="text/javascript">
+				         
+				           //Temp Fix for IE9 
+				          
+				           if(document.getElementById('dtv_footer_tup')) {
+				           			//do nothing 
+				           			
+				           			//alert('I should not come here');
+				           } else {
+				           
+				      var footBlock =  '<div id="dtv_footer_nav">'+
+											'<ol><li>'+
+											'<h3>About Us</h3>'+
+											'<ul>'+
+												'<li><a href="/DTVAPP/global/contentPage.jsp?assetId=3580002">Our Company</a></li>'+
+												'<li><a href="http://investor.directv.com/">Investor Relations</a></li>'+
+						                    	'<li><a href="http://www.directvadsales.com/">Ad Sales</a></li>'+
+												'<li><a href="/DTVAPP/content/careers">Careers</a></li>'+
+												'<li><a href="/DTVAPP/content/contentPage.jsp?assetId=P5880049">Site Map</a></li>'+
+											'</ul></li>'+
+											'<li>'+
+												'<h3>Customer Service</h3>'+
+								'<ul>'+
+									'<li><a href="/DTVAPP/content/support/customer_promise">Customer Promise</a></li>'+
+									'<li><a href="/DTVAPP/rebates/rebatesCenter.jsp">Rebates</a></li>'+
+									'<li><a href="/DTVAPP/content/movers">Movers Connection</a></li>'+
+									'<li><a href="/DTVAPP/referral/referralProgram.jsp">Referrals</a></li>'+
+									'<li><a href="/DTVAPP/global/findRetailer.jsp?assetId=1400028">Find a Retailer</a></li>'+
+								'</ul>'+
+							'</li>'+
+							'<li>'+
+								'<h3>Help &amp; Answers</h3>'+
+								'<ul>'+
+									'<li><a href="http://support.directv.com/">Answer Center</a></li>'+
+									'<li><a href="/DTVAPP/global/articleCategory.jsp?assetId=3610016">Tips & Tricks</a></li>'+
+									'<li><a href="/DTVAPP/content/support/tools">Tools</a></li>'+
+									'<li><a href="http://forums.directv.com/">Technical Forums</a></li>'+
+									'<li><a href="/DTVAPP/content/support/agreements_policies">Agreements & Policies</a></li>'+
+								'</ul>'+
+							'</li><li>'+
+								'<h3>DIRECTV Features</h3>'+
+								'<ul>'+
+									'<li><a href="/DTVAPP/content/packages/overview">TV Packages</a></li>'+
+									'<li><a href="/DTVAPP/content/community">DIRECTV Community</a></li>'+
+				                    '<li><a href="/DTVAPP/login/login.jsp">Create Account</a></li>'+
+									'<li><a href="/entertainment/">My DIRECTV</a></li>'+
+				                    '<li><a href="/DTVAPP/mydirectv/account/myAccount.jsp">My Account</a></li>'+
+								'</ul>'+
+							'</li>'+
+						'</ol>'+		
+						'</div>'+
+						'<ul id="dtv_footer_social" class="autoclear">'+
+						'<li>'+
+						'<a href="http://www.facebook.com/directv" target="_blank" id="footer_facebook_fan" title="BECOME A FAN OF DIRECTV">BECOME A FAN OF DIRECTV</a>'+
+						'</li><li>'+
+						'<a href="http://twitter.com/directv" target="_blank" id="footer_twitter_news" title="FIND OUT THE LATEST NEWS">FIND OUT THE LATEST NEWS</a>'+
+						'</li><li>'+
+						'<a href="http://twitter.com/directvservice" target="_blank" id="footer_twitter_tips" title="GET TIPS AND SUPPORT">GET TIPS AND SUPPORT</a>'+
+						'</li><li>'+
+						'<a href="http://www.youtube.com/directv" target="_blank" id="footer_youtube" title="WATCH THE LATEST VIDEOS">WATCH THE LATEST VIDEOS</a>'+
+						'</li></ul>'+
+						'<div id="mboxLangToggle"></div>'+
+					    '<p id="dtv_footer_language-toggle">'+
+						'Ver contenido en:'+
+						'<a href="http://www.directv.com:80/DTVAPP/layout/component/footer.jsp?lang=es_ES&lid=lang-Spanish&lpos=footer" id="glt_link" title="Ver contenido en: Espa&ntilde;ol">Espa&ntilde;ol</a>'+
+						'<a class="js_rollover question-mark" title="languageToggleToolTip">[?]</a>'+
+						'</p>'+
+						'<div style="display:none">'+
+						'<span class="dtv-rollover-tup" style="display:none" id="languageToggleToolTip">'+
+						'<span class="dtv-rollover">'+
+						'<span class="dtv-rollover-content">Selecciona el idioma en el cual deseas ver las p&aacute;ginas de Internet.<br>Importante: no todas las p&aacute;ginas est&aacute;n disponibles en espa&ntilde;ol.</span>'+
+						'</span></span>'+
+						'</div>'+
+						'<p id="copyright">&copy;2011 DIRECTV, Inc.</p>';
+						
+						
+				           
+				           
+				           			var dFoot = document.createElement('div');
+				           			dFoot.id = "dtv_footer_tup";
+				           			dFoot.className = "third-party";
+				           			dFoot.style.height = "216px";
+				           			dFoot.innerHTML = footBlock;
+				           			//dFoot.innerHTML = '<p> </p>';
+				           			var dTup = document.getElementById('dtv_tup');
+				           			dTup.parentNode.insertBefore(dFoot,dTup.nextSibling);
+				           	
+				           }
+				           
+				           
+				            </script>
+				       <![endif]-->	
+	
+	
+	</div>
+	<script type="text/javascript">
+          
+          		//Prototype Library
+          		document.observe("dom:loaded", function() {
+  				   
+  					$('dtv_tup').setStyle({ 
+  							margin: '0px auto 1px auto', 
+  							paddingBottom: '1px',
+				            top: '2px'
+  							});
+		            $('ctl_header').setStyle({  minHeight: '0px' });
+				});
+            </script>	
+</body>
+</html>
